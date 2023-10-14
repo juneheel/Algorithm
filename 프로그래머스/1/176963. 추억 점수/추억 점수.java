@@ -13,16 +13,18 @@ class Solution {
         int photoRowLength = photo.length;
         int[] result = new int[photoRowLength];
         
-        for(int i=0;i<photoRowLength;i++){
-            for(int j=0;j<photo[i].length;j++){
-                if(nameYear.get(photo[i][j])==null)
-                {
+        int n = 0;
+        for(String[] i : photo)
+        {
+            for(String j : i){
+                if(nameYear.get(j)==null) {
                     continue;
                 }
                 else {
-                    result[i] += nameYear.get(photo[i][j]);
+                    result[n] += nameYear.get(j);
                 }
             }
+            n++;
         }
         int[] answer = result;
         return answer;

@@ -7,5 +7,7 @@ public class Solution {
         if(n%2==0){
             System.out.println(n +" is even");
         }else System.out.println(n +" is odd");
+        
+        // System.out.print(n + " is "+(n % 2 == 0 ? "even" : "odd"));
     }
 }

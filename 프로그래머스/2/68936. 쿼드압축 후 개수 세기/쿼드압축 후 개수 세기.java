@@ -5,16 +5,7 @@ class Solution {
         return answer;
     }
     public static void zip(int x, int y,int r,int[][] arr){
-        int compare = arr[x][y];
-        outerLoop:
-        {
-            for(int i=x;i<x+r;i++){
-                    for(int j=y;j<y+r;j++){
-                        if(compare != arr[i][j]){
-                            break outerLoop;
-                        }   
-                    }
-            }
+        if(check(x,y,r,arr)){
             answer[arr[x][y]]++;
             return ;
         }
@@ -23,5 +14,16 @@ class Solution {
         zip(x+half,y,half,arr);
         zip(x,y+half,half,arr);
         zip(x+half,y+half,half,arr);
+    }
+    public static boolean check(int x, int y,int r,int[][] arr){
+        int compare = arr[x][y];
+        for(int i=x;i<x+r;i++){
+            for(int j=y;j<y+r;j++){
+                if(compare != arr[i][j]){
+                    return false;
+                }   
+            }
+        }
+        return true;
     }
 }

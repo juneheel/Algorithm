@@ -16,9 +16,13 @@ public class Main {
         d = Integer.parseInt(st.nextToken());
         e = Integer.parseInt(st.nextToken());
         f = Integer.parseInt(st.nextToken());
-        x = (c*e- b*f)/(a*e - b*d);
         y = (d*c-a*f)/(d*b-a*e);
-       
+        for(int i=-999;i<1000;i++){
+            if(a*i+b*y == c && d*i+e*y==f) {
+                x=i;
+                break;
+            }
+        }
         System.out.printf("%d %d",x,y);
     }
 }

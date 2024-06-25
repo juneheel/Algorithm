@@ -10,43 +10,34 @@ public class Main {
         st = new StringTokenizer(br.readLine());
         int n = Integer.parseInt(st.nextToken());
         int k = Integer.parseInt(st.nextToken());
-        int[] girls = new int[6];
-        int[] boys = new int[6];
+        int[][] students = new int[6][2];
 
         for(int i=0;i<n;i++){
             st = new StringTokenizer(br.readLine());
             int s = Integer.parseInt(st.nextToken()); //성별
             int y = Integer.parseInt(st.nextToken()); //학년
             if(s==0){
-                girls[--y]++;
+                students[--y][0]++;
             }else {
-                boys[--y]++;
+                students[--y][1]++;
             }
         }
 
-        int result = Solution(girls,boys);
+        int result = Solution(students,k);
         System.out.println(result);
 
     }
 
-    private static int Solution(int[] girls, int[] boys) {
+    private static int Solution(int[][]students,int k) {
         int room = 0;
-        for(int girl : girls){
-            if(girl>2){
-                room += girl/2+girl%2;
-                continue;
-            }
-            if(girl>0){
-                room++;
-            }
-        }
-        for(int boy : boys){
-            if(boy>2){
-                room += boy/2+boy%2;
-                continue;
-            }
-            if(boy>0){
-                room++;
+        for(int i=0;i<2;i++){
+            for(int j=0;j<students.length;j++){
+                if(students[j][i]>k){
+                    room+= students[j][i]%k==0? students[j][i]/k:(students[j][i]/k)+1;
+                }else if(students[j][i]>0){
+                    room++;
+                }else
+                    continue;
             }
         }
         return room;

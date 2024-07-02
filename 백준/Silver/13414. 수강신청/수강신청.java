@@ -9,23 +9,32 @@ public class Main {
         String[] inputs = br.readLine().split(" ");
         int n = Integer.parseInt(inputs[0]);
         int k = Integer.parseInt(inputs[1]);
+        String[] strNum = new String[k];
+        for(int i=0;i<k;i++){
+            strNum[i] = br.readLine();
+        }
+        System.out.println(Solution(n,k,strNum));
+    }
+    private static String Solution(int n,int k,String[] strNum){
+        StringBuilder sb = new StringBuilder();
         Map<String,Integer> hashMap = new HashMap<>();
 
         for(int i=0;i<k;i++){
-            hashMap.put(br.readLine(),i);
+            hashMap.put(strNum[i],i);
         }
 
         List<String> keySet = new ArrayList<>(hashMap.keySet());
         keySet.sort(Comparator.comparing(hashMap::get));
-        
+
         if(keySet.size()<n){
             for(int i=0;i<keySet.size();i++){
-                System.out.println(keySet.get(i));
+                sb.append(keySet.get(i)).append("\n");
             }
         }else {
             for(int i=0;i<n;i++){
-                System.out.println(keySet.get(i));
-            }    
+                sb.append(keySet.get(i)).append("\n");
+            }
         }
+        return sb.toString();
     }
 }
